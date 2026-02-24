@@ -66,14 +66,8 @@ sub IMPLEMENTATION () { "PP" }
 
 sub maybe ($$@)
 {
-	if (defined $_[0] and defined $_[1])
-	{
-		@_
-	}
-	else
-	{
-		(scalar @_ > 1) ? @_[2 .. $#_] : qw()
-	}
+	unshift @_, (defined $_[0] and defined $_[1]);
+	goto \&provided;
 }
 
 sub provided ($$$@)
