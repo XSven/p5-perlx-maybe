@@ -142,7 +142,7 @@ sub _provided_magic ($$$@)
 		
 		my @return;
 		for (my $i = 0; $i < @vals; $i+=2) {
-			push @return, $vals[$i], $vals[$i+1] if defined $vals[$i] && defined $vals[$i+1];
+			push @return, maybe($vals[$i], $vals[$i+1]);
 		}
 		
 		return (@return, @_);
